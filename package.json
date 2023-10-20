@@ -4,9 +4,40 @@
   "engines": {
     "node": ">=16.x"
   },
+  "bin": {
+    "md-links": "./md-links"
+  },
   "bootcamp": {
     "createdAt": "2023-09-20T11:50:43.165Z",
     "version": "6.2.0",
     "commit": "a5360f78b634be4f14eaea996ee4c7afc85a2f48"
+  },
+  "dependencies": {
+    "axios": "^1.5.1",
+    "boxen": "^7.1.1",
+    "chalk": "^4.1.2",
+    "cheerio": "^1.0.0-rc.12",
+    "fs": "^0.0.1-security",
+    "linkifyjs": "^4.1.1",
+    "markdown-it": "^13.0.2",
+    "markdown-link-extractor": "^3.1.0",
+    "marked": "^9.1.2",
+    "mock-fs": "^5.2.0",
+    "path": "^0.12.7",
+    "sinon": "^16.1.1"
+  },
+  "devDependencies": {
+    "axios-mock-adapter": "^1.22.0",
+    "eslint": "^8.51.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "jest": "^29.7.0"
+  },
+  "scripts": {
+    "lint": "npx eslint .",
+    "test": "jest"
+  },
+  "directories": {
+    "test": "test"
   }
 }

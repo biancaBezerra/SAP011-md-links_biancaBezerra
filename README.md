@@ -195,7 +195,7 @@ Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projet
 
   <details><summary>Links</summary><p>
 
-  * [File system - Documentação oficial (em inglês)](https://nodejs.org/api/fs.html)
+  * [File system - Documentação oficial (em inglês)](https://nod/fs.html)
   * [Path - Documentação oficial (em inglês)](https://nodejs.org/api/path.html)
 </p></details>
 
