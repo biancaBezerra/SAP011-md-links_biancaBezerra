@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-
-const { mdLinks, validateLinks, calculateStats } = require('./index.js');
 const chalk = require('chalk');
+
+const { mdLinks } = require('./md-links');
+const { validateLinks, calculateStats } = require('./validate');
 
 const filePath = process.argv[2];
 const options = {
@@ -22,7 +23,7 @@ const printBox = (title, links, fileColor) => {
 
   let currentFile = '';
 
-  links.forEach(link => {
+  links.forEach((link) => {
     if (link.file !== currentFile) {
       console.log(`${chalk.black.bgKeyword(fileColor)(link.file)}:`);
       currentFile = link.file;
@@ -51,7 +52,8 @@ const printCalculateStats = (links) => {
     ${chalk.hex('#B6FCD5')('Total de links:')} ${chalk.hex('#fdc9d9')(stats.total)}
     ${chalk.hex('#B6FCD5')('Links únicos:')} ${chalk.hex('#fdc9d9')(stats.unique)}
     ${options.validate && options.stats ? `${chalk.hex('#B6FCD5')('Links Quebrados:')} ${chalk.hex('#fdc9d9')(stats.broken)}` : ''}
-    ${options.validate && options.stats ? `${chalk.hex('#B6FCD5')('Não Aplicável:')} ${chalk.hex('#fdc9d9')(stats.nana)}` : ''}
+    ${options.validate && options.stats ? `${chalk.hex('#B6FCD5')('Links Não acessíveis:')} ${chalk.hex('#fdc9d9')(stats.not)}` : ''}
+    ${options.validate && options.stats ? `${chalk.hex('#B6FCD5')('ENOTFOUND:')} ${chalk.hex('#fdc9d9')(stats.nana)}` : ''}
   `;
 
   console.log(statsText);
@@ -59,30 +61,30 @@ const printCalculateStats = (links) => {
 
 const main = () => {
   mdLinks(filePath, options)
-    .then(links => {
+    .then((links) => {
       if (options.validate && !options.stats) {
         validateLinks(links)
-          .then(validatedLinks => {
+          .then((validatedLinks) => {
             printBox('Links Validados   \ud83d\udd0d\ud83d\udcc4', validatedLinks, 'lightpink');
           })
-          .catch(error => {
+          .catch((error) => {
             console.error('Ocorreu um erro ao validar os links:', error);
           });
       } else if (!options.validate && options.stats) {
-          printCalculateStats(links);
+        printCalculateStats(links);
       } else if (options.validate && options.stats) {
         validateLinks(links)
-          .then(validatedLinks => {
+          .then((validatedLinks) => {
             printCalculateStats(validatedLinks);
           })
-          .catch(error => {
+          .catch((error) => {
             console.error('Ocorreu um erro ao validar os links:', error);
           });
       } else {
         printBox('Links Encontrados \ud83d\udd0d\ud83d\udcc4', links, 'lightgreen');
       }
     })
-    .catch(error => {
+    .catch((error) => {
       console.error('Ocorreu um erro:', error);
     });
 };
