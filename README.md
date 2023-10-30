@@ -32,7 +32,7 @@ Md-links é uma biblioteca Javascript que simplifica o processo de extração de
 ## 3. Primeiros passos
 
 ```
-npm install md-links-bianca_bezerra
+npm install md-links-bianca-bezerra
 ```
 
 - Para extrair links de um arquivo Markdown em um diretório, execute:
