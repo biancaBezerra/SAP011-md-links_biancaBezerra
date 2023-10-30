@@ -10,7 +10,7 @@ describe('readDirectory', () => {
     const mockMdLinks = jest.fn();
     const filePath = '/caminho/do/diretorio';
 
-    fs.readdir.mockImplementation((path, callback) => {
+    fs.readdir.mockImplementation((_path, callback) => {
       callback(null, mockMdFiles);
     });
 

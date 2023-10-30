@@ -5,10 +5,12 @@ function extractLinks(content, filePath) {
   const links = [];
 
   let match;
+  /* eslint-disable no-cond-assign */
   while ((match = regex.exec(content)) !== null) {
     const [, text, href] = match;
     links.push({ href, text: text.trim(), file: filePath });
   }
+  /* eslint-enable no-cond-assign */
 
   return links;
 }

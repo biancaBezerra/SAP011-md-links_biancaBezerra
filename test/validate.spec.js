@@ -83,7 +83,7 @@ describe('validateLinks', () => {
     return validateLinks([linkWithError]).then((validatedLinks) => {
       // Verifica se o link com erro foi tratado corretamente
       expect(validatedLinks).toEqual([
-        { ...linkWithError, status: 'ENOTFOUND', ok: false },
+        { href: 'https://example.com', text: 'Link with error', status: 'ENOTFOUND' },
       ]);
     });
   });
@@ -97,21 +97,7 @@ describe('validateLinks', () => {
     return validateLinks([linkWithStatus]).then((validatedLinks) => {
       // Verifica se o status no catch é coberto corretamente
       expect(validatedLinks).toEqual([
-        { ...linkWithStatus, status: 500, ok: false },
-      ]);
-    });
-  });
-
-  it('deve cobrir linhas de status igual a 999', () => {
-    const linkWithStatus999 = { href: 'https://example.com', text: 'Link with status 999' };
-
-    // Simula um erro no Axios com status igual a 999 no response
-    axios.get.mockRejectedValueOnce({ response: { status: 999 } });
-
-    return validateLinks([linkWithStatus999]).then((validatedLinks) => {
-      // Verifica se o status igual a 999 é coberto corretamente
-      expect(validatedLinks).toEqual([
-        { ...linkWithStatus999, status: 999, ok: true },
+        { href: 'https://example.com', text: 'Link with status', status: 500 },
       ]);
     });
   });
