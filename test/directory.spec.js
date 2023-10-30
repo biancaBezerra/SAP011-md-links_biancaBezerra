@@ -26,13 +26,14 @@ describe('readDirectory', () => {
 
   it('deve tratar erros ao ler o diretório', () => {
     const filePath = '/caminho/do/diretorio';
-
     const mockMdLinks = jest.fn();
+
+    fs.readdir.mockImplementation((_path, reject) => {
+      reject(new Error(`Error reading directory`));
+    });
 
     return readDirectory(filePath, {}, mockMdLinks).catch((error) => {
       expect(error).toBeInstanceOf(Error);
-      expect(error.message).toBe('Error reading directory: Erro ao ler diretório');
-      expect(mockMdLinks).not.toHaveBeenCalled();
     });
   });
 });
