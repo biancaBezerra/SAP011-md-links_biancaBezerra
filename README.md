@@ -99,7 +99,7 @@ md-links nomedodiretorio/nomedoarquivo.md --stats --validate
 
 ## 6. Testes Unitários
 
-Este projeto conta com uma `suíte completa de testes unitários` para garantir a qualidade do código e a confiabilidade da ferramenta de linha de comando. Os testes foram escritos utilizando a biblioteca de testes Jest.
+Este projeto conta com uma `suíte completa de testes unitários` para garantir a qualidade do código e a confiabilidade da ferramenta de linha de comando. Os testes foram escritos utilizando a biblioteca de testes Jest e Sinon.
 
 Os testes unitários cobriram a porcentagem mínima permitida de statements, functions lines e branches.
 
