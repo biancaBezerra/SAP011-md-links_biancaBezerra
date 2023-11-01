@@ -7,7 +7,8 @@ function mdLinks(filePath, options) {
   return new Promise((resolve, reject) => {
     fs.stat(filePath, (err, stats) => {
       if (err) {
-        reject(new Error(`Error:${err.message}`));
+        reject(new Error(err.message));
+        return;
       }
       if (stats.isFile() && filePath.endsWith('.md')) {
         readAndExtractLinks(filePath, options)
@@ -17,8 +18,6 @@ function mdLinks(filePath, options) {
         readDirectory(filePath, options, mdLinks)
           .then(resolve)
           .catch(reject);
-      } else {
-        resolve([]);
       }
     });
   });

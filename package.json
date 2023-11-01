@@ -23,6 +23,7 @@
   "dependencies": {
     "assert": "^2.1.0",
     "axios": "^1.5.1",
+    "chai": "^4.3.10",
     "chalk": "^4.1.2",
     "fs": "^0.0.1-security",
     "path": "^0.12.7",
