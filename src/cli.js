@@ -62,6 +62,7 @@ const printCalculateStats = (links) => {
 const main = () => {
   mdLinks(filePath, options)
     .then((links) => {
+      console.log(links);
       if (options.validate && !options.stats) {
         validateLinks(links)
           .then((validatedLinks) => {

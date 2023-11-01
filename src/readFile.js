@@ -1,8 +1,11 @@
 const fs = require('fs');
+const path = require('path');
 const { extractLinks, validateLinks } = require('./validate');
 
 function readAndExtractLinks(filePath, options) {
   return new Promise((resolve, reject) => {
+    if (path.extname(filePath) === '.md') {
+          // const mdFiles = promises.filter((file) => path.extname(file) === '.md');
     fs.readFile(filePath, 'utf-8', (readErr, content) => {
       if (readErr) {
         reject(new Error(`Error reading file: ${readErr.message}`));
@@ -17,6 +20,7 @@ function readAndExtractLinks(filePath, options) {
         }
       }
     });
+   }
   });
 }
 
