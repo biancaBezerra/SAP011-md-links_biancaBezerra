@@ -59,34 +59,30 @@ const printCalculateStats = (links) => {
   console.log(statsText);
 };
 
-const main = () => {
-  mdLinks(filePath, options)
-    .then((links) => {
-      if (options.validate && !options.stats) {
-        validateLinks(links)
-          .then((validatedLinks) => {
-            printBox('Links Validados   \ud83d\udd0d\ud83d\udcc4', validatedLinks, 'lightpink');
-          })
-          .catch((error) => {
-            console.error('Ocorreu um erro ao validar os links:', error);
-          });
-      } else if (!options.validate && options.stats) {
-        printCalculateStats(links);
-      } else if (options.validate && options.stats) {
-        validateLinks(links)
-          .then((validatedLinks) => {
-            printCalculateStats(validatedLinks);
-          })
-          .catch((error) => {
-            console.error('Ocorreu um erro ao validar os links:', error);
-          });
-      } else {
-        printBox('Links Encontrados \ud83d\udd0d\ud83d\udcc4', links, 'lightgreen');
-      }
-    })
-    .catch((error) => {
-      console.error('Ocorreu um erro:', error);
-    });
-};
-
-main();
+mdLinks(filePath, options)
+  .then((links) => {
+    if (options.validate && !options.stats) {
+      validateLinks(links)
+        .then((validatedLinks) => {
+          printBox('Links Validados   \ud83d\udd0d\ud83d\udcc4', validatedLinks, 'lightpink');
+        })
+        .catch((error) => {
+          console.error('Ocorreu um erro ao validar os links:', error);
+        });
+    } else if (!options.validate && options.stats) {
+      printCalculateStats(links);
+    } else if (options.validate && options.stats) {
+      validateLinks(links)
+        .then((validatedLinks) => {
+          printCalculateStats(validatedLinks);
+        })
+        .catch((error) => {
+          console.error('Ocorreu um erro ao validar os links:', error);
+        });
+    } else {
+      printBox('Links Encontrados \ud83d\udd0d\ud83d\udcc4', links, 'lightgreen');
+    }
+  })
+  .catch((error) => {
+    console.error('Ocorreu um erro:', error);
+  });

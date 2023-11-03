@@ -11,11 +11,11 @@ function mdLinks(filePath, options) {
         return;
       }
       if (stats.isFile() && filePath.endsWith('.md')) {
-        readAndExtractLinks(filePath, options)
+        return readAndExtractLinks(filePath, options)
           .then(resolve)
           .catch(reject);
       } else if (stats.isDirectory()) {
-        readDirectory(filePath, options, mdLinks)
+        return readDirectory(filePath, options, mdLinks)
           .then(resolve)
           .catch(reject);
       }

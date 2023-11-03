@@ -1,5 +1,8 @@
 const sinon = require('sinon');
 const { mdLinks } = require('../src/md-links');
+const { readDirectory } = require('../src/directory');
+
+jest.mock('../src/directory');
 
 const fsMock = {
   stat: sinon.stub(),
@@ -9,12 +12,15 @@ const validateMock = {
   validateLinks: sinon.stub(),
 };
 
+
+
 describe('mdLinks', () => {
   it('deve chamar readDirectory para um diretório', () => {
-    const directoryPath = 'D:/Documentos/LABORATORIA/SAP011-md-links_biancaBezerra/testes';
+    const directoryPath = '../testes';
   
-    return mdLinks(directoryPath, {validate: true})
-      .then(() => {
+    mdLinks(directoryPath, {validate: true})
+      .then((links) => {
+      expect(readDirectory).toHaveBeenCalled()
       });
   });  
 
