@@ -23,7 +23,7 @@ function readDirectory(filePath, options, mdLinks) {
                 .catch(reject);
             } else if (stats.isFile() && file.endsWith('.md')) {
               // Se for um arquivo .md, chame a função mdLinks para extrair links.
-              mdLinks(fullPath, fullPath, options)
+              mdLinks(fullPath, options)
                 .then(resolve)
                 .catch(reject);
             } else {
